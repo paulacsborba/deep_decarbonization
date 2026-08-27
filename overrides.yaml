@@ -1,0 +1,901 @@
+overrides:
+
+    fossil_banned:
+
+        techs.ccgt.exists: false
+
+
+    objective_options:
+        run.objective_options.cost_class: {'monetary':1, 'emissions':0.05}
+
+
+
+
+##### BASELINE
+####### DEMAND NO CLIMATE CHANGE
+
+    demand_baseline_noclimate:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_baseline.csv
+        techs.demand_hydrogen.exists: false
+  #      techs.ccgt.exists: false
+
+####### DEMAND SSP 245 
+
+    demand_baseline_ssp245:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_baseline_ssp245.csv
+        techs.demand_hydrogen.exists: false
+   #     techs.ccgt.exists: false        
+ 
+####### DEMAND SSP 585 
+        
+    demand_baseline_ssp585:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_baseline_ssp585.csv
+        techs.demand_hydrogen.exists: false
+  #      techs.ccgt.exists: false        
+        
+        
+        
+##### CONSERVATION
+####### DEMAND NO CLIMATE CHANGE
+
+    demand_noclimate_conservation:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_conservation.csv
+        techs.demand_hydrogen.exists: false
+  #      techs.ccgt.exists: false
+
+####### DEMAND SSP 245 
+
+    demand_ssp245_conservation:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_conservation_ssp245.csv
+        techs.demand_hydrogen.exists: false
+   #     techs.ccgt.exists: false        
+        
+ 
+####### DEMAND SSP 585 
+        
+    demand_ssp585_conservation:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_conservation_ssp585.csv
+        techs.demand_hydrogen.exists: false        
+   #     techs.ccgt.exists: false
+
+##### GOVERNANCE
+####### DEMAND NO CLIMATE CHANGE
+
+    demand_noclimate_governance:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_governance.csv
+        techs.demand_hydrogen.exists: false
+   #     techs.ccgt.exists: false
+
+####### DEMAND SSP 245 
+
+    demand_ssp245_governance:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_governance_ssp245.csv
+        techs.demand_hydrogen.exists: false
+  #      techs.ccgt.exists: false        
+ 
+####### DEMAND SSP 585 
+        
+    demand_ssp585_governance:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_governance_ssp585.csv
+        techs.demand_hydrogen.exists: false  
+    #    techs.ccgt.exists: false
+
+##### DEGRADED PASTURES
+####### DEMAND NO CLIMATE CHANGE
+
+    demand_noclimate_degraded_pastures:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_degraded_pastures.csv
+        techs.demand_hydrogen.exists: false
+   #     techs.ccgt.exists: false
+
+####### DEMAND SSP 245 
+
+    demand_ssp245_degraded_pastures:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_degraded_pastures_ssp245.csv
+        techs.demand_hydrogen.exists: false
+        techs.ccgt.exists: false        
+ 
+####### DEMAND SSP 585 
+        
+    demand_ssp585_degraded_pastures:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_degraded_pastures_ssp585.csv
+        techs.demand_hydrogen.exists: false    
+        techs.ccgt.exists: false
+
+
+##### INTEGRATED
+####### DEMAND NO CLIMATE CHANGE
+
+    demand_noclimate_integrated:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_integrated.csv
+        techs.demand_hydrogen.exists: false
+        techs.ccgt.exists: false
+
+####### DEMAND SSP 245 
+
+    demand_ssp245_integrated:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_integrated_ssp245.csv
+        techs.demand_hydrogen.exists: false
+        techs.ccgt.exists: false        
+ 
+####### DEMAND SSP 585 
+        
+    demand_ssp585_integrated:
+        techs.demand_electricity.constraints.resource: file=demand/electricity_demand_integrated_ssp585.csv
+        techs.demand_hydrogen.exists: false            
+        techs.ccgt.exists: false        
+        
+### CLIMATE CHANGE SCENARIOS - WIND AND SOLAR - 2040-2070
+
+####SSP2 4.5 
+
+    ssp245:
+        techs.pv_rooftop.constraints.resource: file=resource/calliope_SSP245_2040_2070_oneaxis.csv    
+        techs.pv_scale.constraints.resource: file=resource/calliope_SSP245_2040_2070_oneaxis.csv   
+        techs.pv_existing.constraints.resource: file=resource/calliope_SSP245_2040_2070_oneaxis.csv
+        techs.wind_onshore.constraints.resource: file=resource/calliope_SSP245_2040_2070_wind.csv         
+        techs.wind_onshore_existing.constraints.resource: file=resource/calliope_SSP245_2040_2070_wind.csv       
+        techs.run_of_river.constraints.resource: file=resource/hydro_runofriver_SSP245_2040_2070.csv
+        techs.reservoir.constraints.resource: file=resource/hydro_reservoir_SSP245_2040_2070.csv      
+
+        
+####SSP5 8.5 - 2040 - 2070
+
+    ssp585:
+        techs.pv_rooftop.constraints.resource: file=resource/calliope_SSP585_2040_2070_oneaxis.csv    
+        techs.pv_scale.constraints.resource: file=resource/calliope_SSP585_2040_2070_oneaxis.csv   
+        techs.pv_existing.constraints.resource: file=resource/calliope_SSP585_2040_2070_oneaxis.csv
+        techs.wind_onshore.constraints.resource: file=resource/calliope_SSP585_2040_2070_wind.csv         
+        techs.wind_onshore_existing.constraints.resource: file=resource/calliope_SSP585_2040_2070_wind.csv       
+        techs.run_of_river.constraints.resource: file=resource/hydro_runofriver_SSP585_2040_2070.csv
+        techs.reservoir.constraints.resource: file=resource/hydro_reservoir_SSP585_2040_2070.csv   
+
+        
+       
+## weather years
+          
+    weather_2000:
+        model.subset_time: ['2000-01-01', '2000-12-31']
+        
+    weather_2001:
+        model.subset_time: ['2001-01-01', '2001-12-31']
+
+    weather_2002:
+        model.subset_time: ['2002-01-01', '2002-12-31']
+
+    weather_2003:
+        model.subset_time: ['2003-01-01', '2003-12-31']
+
+    weather_2004:
+        model.subset_time: ['2004-01-01', '2004-12-31']
+
+    weather_2005:
+        model.subset_time: ['2005-01-01', '2005-12-31']
+
+    weather_2006:
+        model.subset_time: ['2006-01-01', '2006-12-31']
+
+    weather_2007:
+        model.subset_time: ['2007-01-01', '2007-12-31']
+
+    weather_2008:
+        model.subset_time: ['2008-01-01', '2008-12-31']
+
+    weather_2009:
+        model.subset_time: ['2009-01-01', '2009-12-31']
+
+    weather_2010:
+        model.subset_time: ['2010-01-01', '2010-12-31']
+
+    weather_2011:
+        model.subset_time: ['2011-01-01', '2011-12-31']
+
+    weather_2012:
+        model.subset_time: ['2012-01-01', '2012-12-31']
+
+    weather_2013:
+        model.subset_time: ['2013-01-01', '2013-12-31']
+
+    weather_2014:
+        model.subset_time: ['2014-01-01', '2014-12-31']
+
+    weather_2015:
+        model.subset_time: ['2015-01-01', '2015-12-31']
+
+    weather_2016:
+        model.subset_time: ['2016-01-01', '2016-12-31']
+
+    weather_2017:
+        model.subset_time: ['2017-01-01', '2017-12-31']
+
+    weather_2018:
+        model.subset_time: ['2018-01-01', '2018-12-31']
+         
+    weather_2019:
+        model.subset_time: ['2019-01-01', '2019-01-10']
+
+    baseline:
+        locations.AC_Z1.techs.wind_onshore.constraints.energy_cap_max: 180228.75
+        locations.AC_Z1.techs.pv_scale.constraints.energy_cap_max: 1143759.375
+        locations.AL_Z1.techs.wind_onshore.constraints.energy_cap_max: 88842.975
+        locations.AL_Z1.techs.pv_scale.constraints.energy_cap_max: 563811.188
+        locations.AM_Z1.techs.wind_onshore.constraints.energy_cap_max: 921197.875
+        locations.AM_Z1.techs.pv_scale.constraints.energy_cap_max: 5846063.438
+        locations.AP_Z1.techs.wind_onshore.constraints.energy_cap_max: 150356.7
+        locations.AP_Z1.techs.pv_scale.constraints.energy_cap_max: 954186.75
+        locations.BA_Z1.techs.wind_onshore.constraints.energy_cap_max: 258440.0
+        locations.BA_Z1.techs.pv_scale.constraints.energy_cap_max: 1640100.0
+        locations.BA_Z2.techs.wind_onshore.constraints.energy_cap_max: 21042.45
+        locations.BA_Z2.techs.pv_scale.constraints.energy_cap_max: 133538.625
+        locations.BA_Z3.techs.wind_onshore.constraints.energy_cap_max: 356456.425
+        locations.BA_Z3.techs.pv_scale.constraints.energy_cap_max: 2262127.312
+        locations.BA_Z4.techs.wind_onshore.constraints.energy_cap_max: 80706.275
+        locations.BA_Z4.techs.pv_scale.constraints.energy_cap_max: 512174.438
+        locations.BA_Z5.techs.wind_onshore.constraints.energy_cap_max: 488984.925
+        locations.BA_Z5.techs.pv_scale.constraints.energy_cap_max: 3103173.562
+        locations.BA_Z6.techs.wind_onshore.constraints.energy_cap_max: 412495.85
+        locations.BA_Z6.techs.pv_scale.constraints.energy_cap_max: 2617762.125
+        locations.BA_Z7.techs.wind_onshore.constraints.energy_cap_max: 306544.225
+        locations.BA_Z7.techs.pv_scale.constraints.energy_cap_max: 1945376.812
+        locations.CE_Z1.techs.wind_onshore.constraints.energy_cap_max: 353967.25
+        locations.CE_Z1.techs.pv_scale.constraints.energy_cap_max: 2246330.625
+        locations.CE_Z2.techs.wind_onshore.constraints.energy_cap_max: 240065.15
+        locations.CE_Z2.techs.pv_scale.constraints.energy_cap_max: 1523490.375
+        locations.ES_Z1.techs.wind_onshore.constraints.energy_cap_max: 55581.5
+        locations.ES_Z1.techs.pv_scale.constraints.energy_cap_max: 352728.75
+        locations.GO_Z1.techs.wind_onshore.constraints.energy_cap_max: 592721.35
+        locations.GO_Z1.techs.pv_scale.constraints.energy_cap_max: 3761500.875
+        locations.GO_Z2.techs.wind_onshore.constraints.energy_cap_max: 401884.925
+        locations.GO_Z2.techs.pv_scale.constraints.energy_cap_max: 2550423.562
+        locations.GO_Z3.techs.wind_onshore.constraints.energy_cap_max: 160329.0
+        locations.GO_Z3.techs.pv_scale.constraints.energy_cap_max: 1017472.5
+        locations.GO_Z4.techs.wind_onshore.constraints.energy_cap_max: 190492.9
+        locations.GO_Z4.techs.pv_scale.constraints.energy_cap_max: 1208897.25
+        locations.MA_Z1.techs.wind_onshore.constraints.energy_cap_max: 492401.65
+        locations.MA_Z1.techs.pv_scale.constraints.energy_cap_max: 3124856.625
+        locations.MA_Z2.techs.wind_onshore.constraints.energy_cap_max: 346200.4
+        locations.MA_Z2.techs.pv_scale.constraints.energy_cap_max: 2197041.0
+        locations.MA_Z3.techs.wind_onshore.constraints.energy_cap_max: 295789.325
+        locations.MA_Z3.techs.pv_scale.constraints.energy_cap_max: 1877124.562
+        locations.MG_Z1.techs.wind_onshore.constraints.energy_cap_max: 580.45
+        locations.MG_Z1.techs.pv_scale.constraints.energy_cap_max: 3683.625
+        locations.MG_Z2.techs.wind_onshore.constraints.energy_cap_max: 3820.7
+        locations.MG_Z2.techs.pv_scale.constraints.energy_cap_max: 24246.75
+        locations.MG_Z3.techs.wind_onshore.constraints.energy_cap_max: 476620.625
+        locations.MG_Z3.techs.pv_scale.constraints.energy_cap_max: 3024707.812
+        locations.MG_Z4.techs.wind_onshore.constraints.energy_cap_max: 26442.325
+        locations.MG_Z4.techs.pv_scale.constraints.energy_cap_max: 167807.062
+        locations.MG_Z5.techs.wind_onshore.constraints.energy_cap_max: 20436.0
+        locations.MG_Z5.techs.pv_scale.constraints.energy_cap_max: 129690.0
+        locations.MG_Z6.techs.wind_onshore.constraints.energy_cap_max: 253506.825
+        locations.MG_Z6.techs.pv_scale.constraints.energy_cap_max: 1608793.312
+        locations.MG_Z7.techs.wind_onshore.constraints.energy_cap_max: 342443.075
+        locations.MG_Z7.techs.pv_scale.constraints.energy_cap_max: 2173196.438
+        locations.MG_Z8.techs.wind_onshore.constraints.energy_cap_max: 146259.425
+        locations.MG_Z8.techs.pv_scale.constraints.energy_cap_max: 928184.812
+        locations.MS_Z1.techs.wind_onshore.constraints.energy_cap_max: 359242.325
+        locations.MS_Z1.techs.pv_scale.constraints.energy_cap_max: 2279807.062
+        locations.MS_Z2.techs.wind_onshore.constraints.energy_cap_max: 502431.8
+        locations.MS_Z2.techs.pv_scale.constraints.energy_cap_max: 3188509.5
+        locations.MS_Z3.techs.wind_onshore.constraints.energy_cap_max: 345443.8
+        locations.MS_Z3.techs.pv_scale.constraints.energy_cap_max: 2192239.5
+        locations.MS_Z4.techs.wind_onshore.constraints.energy_cap_max: 471937.7
+        locations.MS_Z4.techs.pv_scale.constraints.energy_cap_max: 2994989.25
+        locations.MT_Z1.techs.wind_onshore.constraints.energy_cap_max: 1042264.6
+        locations.MT_Z1.techs.pv_scale.constraints.energy_cap_max: 6614371.5
+        locations.MT_Z2.techs.wind_onshore.constraints.energy_cap_max: 734201.0
+        locations.MT_Z2.techs.pv_scale.constraints.energy_cap_max: 4659352.5
+        locations.MT_Z3.techs.wind_onshore.constraints.energy_cap_max: 694173.35
+        locations.MT_Z3.techs.pv_scale.constraints.energy_cap_max: 4405330.875
+        locations.MT_Z4.techs.wind_onshore.constraints.energy_cap_max: 290849.0
+        locations.MT_Z4.techs.pv_scale.constraints.energy_cap_max: 1845772.5
+        locations.MT_Z5.techs.wind_onshore.constraints.energy_cap_max: 415599.925
+        locations.MT_Z5.techs.pv_scale.constraints.energy_cap_max: 2637461.062
+        locations.MT_Z6.techs.wind_onshore.constraints.energy_cap_max: 301319.2
+        locations.MT_Z6.techs.pv_scale.constraints.energy_cap_max: 1912218.0
+        locations.PA_Z1.techs.wind_onshore.constraints.energy_cap_max: 548381.925
+        locations.PA_Z1.techs.pv_scale.constraints.energy_cap_max: 3480116.062
+        locations.PA_Z2.techs.wind_onshore.constraints.energy_cap_max: 754857.35
+        locations.PA_Z2.techs.pv_scale.constraints.energy_cap_max: 4790440.875
+        locations.PA_Z3.techs.wind_onshore.constraints.energy_cap_max: 326820.975
+        locations.PA_Z3.techs.pv_scale.constraints.energy_cap_max: 2074056.188
+        locations.PA_Z4.techs.wind_onshore.constraints.energy_cap_max: 119380.95
+        locations.PA_Z4.techs.pv_scale.constraints.energy_cap_max: 757609.875
+        locations.PA_Z5.techs.wind_onshore.constraints.energy_cap_max: 129222.925
+        locations.PA_Z5.techs.pv_scale.constraints.energy_cap_max: 820068.562
+        locations.PB_Z1.techs.wind_onshore.constraints.energy_cap_max: 220418.9
+        locations.PB_Z1.techs.pv_scale.constraints.energy_cap_max: 1398812.25
+        locations.PE_Z1.techs.wind_onshore.constraints.energy_cap_max: 76415.95
+        locations.PE_Z1.techs.pv_scale.constraints.energy_cap_max: 484947.375
+        locations.PE_Z2.techs.wind_onshore.constraints.energy_cap_max: 268544.575
+        locations.PE_Z2.techs.pv_scale.constraints.energy_cap_max: 1704225.188
+        locations.PI_Z1.techs.wind_onshore.constraints.energy_cap_max: 311853.75
+        locations.PI_Z1.techs.pv_scale.constraints.energy_cap_max: 1979071.875
+        locations.PI_Z2.techs.wind_onshore.constraints.energy_cap_max: 554897.525
+        locations.PI_Z2.techs.pv_scale.constraints.energy_cap_max: 3521465.062
+        locations.PI_Z3.techs.wind_onshore.constraints.energy_cap_max: 206455.6
+        locations.PI_Z3.techs.pv_scale.constraints.energy_cap_max: 1310199.0
+        locations.PR_Z1.techs.wind_onshore.constraints.energy_cap_max: 76252.475
+        locations.PR_Z1.techs.pv_scale.constraints.energy_cap_max: 483909.938
+        locations.PR_Z2.techs.wind_onshore.constraints.energy_cap_max: 320128.575
+        locations.PR_Z2.techs.pv_scale.constraints.energy_cap_max: 2031585.188
+        locations.RJ_Z1.techs.wind_onshore.constraints.energy_cap_max: 29426.15
+        locations.RJ_Z1.techs.pv_scale.constraints.energy_cap_max: 186742.875
+        locations.RN_Z1.techs.wind_onshore.constraints.energy_cap_max: 235414.4
+        locations.RN_Z1.techs.pv_scale.constraints.energy_cap_max: 1493976.0
+        locations.RO_Z1.techs.wind_onshore.constraints.energy_cap_max: 226039.45
+        locations.RO_Z1.techs.pv_scale.constraints.energy_cap_max: 1434481.125
+        locations.RO_Z2.techs.wind_onshore.constraints.energy_cap_max: 388539.45
+        locations.RO_Z2.techs.pv_scale.constraints.energy_cap_max: 2465731.125
+        locations.RR_Z1.techs.wind_onshore.constraints.energy_cap_max: 118014.0
+        locations.RR_Z1.techs.pv_scale.constraints.energy_cap_max: 748935.0
+        locations.RS_Z1.techs.wind_onshore.constraints.energy_cap_max: 252633.875
+        locations.RS_Z1.techs.pv_scale.constraints.energy_cap_max: 1603253.438
+        locations.RS_Z2.techs.wind_onshore.constraints.energy_cap_max: 229907.275
+        locations.RS_Z2.techs.pv_scale.constraints.energy_cap_max: 1459026.938
+        locations.RS_Z3.techs.wind_onshore.constraints.energy_cap_max: 419930.55
+        locations.RS_Z3.techs.pv_scale.constraints.energy_cap_max: 2664943.875
+        locations.SC_Z1.techs.wind_onshore.constraints.energy_cap_max: 18999.5
+        locations.SC_Z1.techs.pv_scale.constraints.energy_cap_max: 120573.75
+        locations.SC_Z2.techs.wind_onshore.constraints.energy_cap_max: 55116.75
+        locations.SC_Z2.techs.pv_scale.constraints.energy_cap_max: 349779.375
+        locations.SE_Z1.techs.wind_onshore.constraints.energy_cap_max: 82205.825
+        locations.SE_Z1.techs.pv_scale.constraints.energy_cap_max: 521690.812
+        locations.SP_Z1.techs.wind_onshore.constraints.energy_cap_max: 280600.775
+        locations.SP_Z1.techs.pv_scale.constraints.energy_cap_max: 1780735.688
+        locations.SP_Z2.techs.wind_onshore.constraints.energy_cap_max: 467692.55
+        locations.SP_Z2.techs.pv_scale.constraints.energy_cap_max: 2968048.875
+        locations.SP_Z3.techs.wind_onshore.constraints.energy_cap_max: 75560.875
+        locations.SP_Z3.techs.pv_scale.constraints.energy_cap_max: 479520.938
+        locations.TO_Z1.techs.wind_onshore.constraints.energy_cap_max: 569193.95
+        locations.TO_Z1.techs.pv_scale.constraints.energy_cap_max: 3612192.375
+        locations.TO_Z2.techs.wind_onshore.constraints.energy_cap_max: 454493.975
+        locations.TO_Z2.techs.pv_scale.constraints.energy_cap_max: 2884288.688
+    conservation:
+        locations.AC_Z1.techs.wind_onshore.constraints.energy_cap_max: 105948.7
+        locations.AC_Z1.techs.pv_scale.constraints.energy_cap_max: 672366.75
+        locations.AL_Z1.techs.wind_onshore.constraints.energy_cap_max: 68596.775
+        locations.AL_Z1.techs.pv_scale.constraints.energy_cap_max: 435325.688
+        locations.AM_Z1.techs.wind_onshore.constraints.energy_cap_max: 333283.925
+        locations.AM_Z1.techs.pv_scale.constraints.energy_cap_max: 2115071.062
+        locations.AP_Z1.techs.wind_onshore.constraints.energy_cap_max: 25085.775
+        locations.AP_Z1.techs.pv_scale.constraints.energy_cap_max: 159198.188
+        locations.BA_Z1.techs.wind_onshore.constraints.energy_cap_max: 189055.425
+        locations.BA_Z1.techs.pv_scale.constraints.energy_cap_max: 1199774.812
+        locations.BA_Z2.techs.wind_onshore.constraints.energy_cap_max: 10413.325
+        locations.BA_Z2.techs.pv_scale.constraints.energy_cap_max: 66084.562
+        locations.BA_Z3.techs.wind_onshore.constraints.energy_cap_max: 239628.025
+        locations.BA_Z3.techs.pv_scale.constraints.energy_cap_max: 1520716.312
+        locations.BA_Z4.techs.wind_onshore.constraints.energy_cap_max: 38503.4
+        locations.BA_Z4.techs.pv_scale.constraints.energy_cap_max: 244348.5
+        locations.BA_Z5.techs.wind_onshore.constraints.energy_cap_max: 283692.5
+        locations.BA_Z5.techs.pv_scale.constraints.energy_cap_max: 1800356.25
+        locations.BA_Z6.techs.wind_onshore.constraints.energy_cap_max: 237721.25
+        locations.BA_Z6.techs.pv_scale.constraints.energy_cap_max: 1508615.625
+        locations.BA_Z7.techs.wind_onshore.constraints.energy_cap_max: 185109.925
+        locations.BA_Z7.techs.pv_scale.constraints.energy_cap_max: 1174736.062
+        locations.CE_Z1.techs.wind_onshore.constraints.energy_cap_max: 288070.9
+        locations.CE_Z1.techs.pv_scale.constraints.energy_cap_max: 1828142.25
+        locations.CE_Z2.techs.wind_onshore.constraints.energy_cap_max: 120538.6
+        locations.CE_Z2.techs.pv_scale.constraints.energy_cap_max: 764956.5
+        locations.ES_Z1.techs.wind_onshore.constraints.energy_cap_max: 35045.075
+        locations.ES_Z1.techs.pv_scale.constraints.energy_cap_max: 222401.438
+        locations.GO_Z1.techs.wind_onshore.constraints.energy_cap_max: 375075.35
+        locations.GO_Z1.techs.pv_scale.constraints.energy_cap_max: 2380285.875
+        locations.GO_Z2.techs.wind_onshore.constraints.energy_cap_max: 308466.925
+        locations.GO_Z2.techs.pv_scale.constraints.energy_cap_max: 1957578.562
+        locations.GO_Z3.techs.wind_onshore.constraints.energy_cap_max: 108624.1
+        locations.GO_Z3.techs.pv_scale.constraints.energy_cap_max: 689345.25
+        locations.GO_Z4.techs.wind_onshore.constraints.energy_cap_max: 109139.225
+        locations.GO_Z4.techs.pv_scale.constraints.energy_cap_max: 692614.312
+        locations.MA_Z1.techs.wind_onshore.constraints.energy_cap_max: 386631.05
+        locations.MA_Z1.techs.pv_scale.constraints.energy_cap_max: 2453620.125
+        locations.MA_Z2.techs.wind_onshore.constraints.energy_cap_max: 245618.425
+        locations.MA_Z2.techs.pv_scale.constraints.energy_cap_max: 1558732.312
+        locations.MA_Z3.techs.wind_onshore.constraints.energy_cap_max: 172471.0
+        locations.MA_Z3.techs.pv_scale.constraints.energy_cap_max: 1094527.5
+        locations.MG_Z1.techs.wind_onshore.constraints.energy_cap_max: 580.45
+        locations.MG_Z1.techs.pv_scale.constraints.energy_cap_max: 3683.625
+        locations.MG_Z2.techs.wind_onshore.constraints.energy_cap_max: 3815.175
+        locations.MG_Z2.techs.pv_scale.constraints.energy_cap_max: 24211.688
+        locations.MG_Z3.techs.wind_onshore.constraints.energy_cap_max: 292129.5
+        locations.MG_Z3.techs.pv_scale.constraints.energy_cap_max: 1853898.75
+        locations.MG_Z4.techs.wind_onshore.constraints.energy_cap_max: 19816.55
+        locations.MG_Z4.techs.pv_scale.constraints.energy_cap_max: 125758.875
+        locations.MG_Z5.techs.wind_onshore.constraints.energy_cap_max: 13232.375
+        locations.MG_Z5.techs.pv_scale.constraints.energy_cap_max: 83974.688
+        locations.MG_Z6.techs.wind_onshore.constraints.energy_cap_max: 159468.725
+        locations.MG_Z6.techs.pv_scale.constraints.energy_cap_max: 1012013.062
+        locations.MG_Z7.techs.wind_onshore.constraints.energy_cap_max: 254053.475
+        locations.MG_Z7.techs.pv_scale.constraints.energy_cap_max: 1612262.438
+        locations.MG_Z8.techs.wind_onshore.constraints.energy_cap_max: 110693.7
+        locations.MG_Z8.techs.pv_scale.constraints.energy_cap_max: 702479.25
+        locations.MS_Z1.techs.wind_onshore.constraints.energy_cap_max: 240186.7
+        locations.MS_Z1.techs.pv_scale.constraints.energy_cap_max: 1524261.75
+        locations.MS_Z2.techs.wind_onshore.constraints.energy_cap_max: 267610.85
+        locations.MS_Z2.techs.pv_scale.constraints.energy_cap_max: 1698299.625
+        locations.MS_Z3.techs.wind_onshore.constraints.energy_cap_max: 228512.05
+        locations.MS_Z3.techs.pv_scale.constraints.energy_cap_max: 1450172.625
+        locations.MS_Z4.techs.wind_onshore.constraints.energy_cap_max: 409352.775
+        locations.MS_Z4.techs.pv_scale.constraints.energy_cap_max: 2597815.688
+        locations.MT_Z1.techs.wind_onshore.constraints.energy_cap_max: 460090.475
+        locations.MT_Z1.techs.pv_scale.constraints.energy_cap_max: 2919804.938
+        locations.MT_Z2.techs.wind_onshore.constraints.energy_cap_max: 425084.4
+        locations.MT_Z2.techs.pv_scale.constraints.energy_cap_max: 2697651.0
+        locations.MT_Z3.techs.wind_onshore.constraints.energy_cap_max: 333219.9
+        locations.MT_Z3.techs.pv_scale.constraints.energy_cap_max: 2114664.75
+        locations.MT_Z4.techs.wind_onshore.constraints.energy_cap_max: 112817.25
+        locations.MT_Z4.techs.pv_scale.constraints.energy_cap_max: 715955.625
+        locations.MT_Z5.techs.wind_onshore.constraints.energy_cap_max: 149429.8
+        locations.MT_Z5.techs.pv_scale.constraints.energy_cap_max: 948304.5
+        locations.MT_Z6.techs.wind_onshore.constraints.energy_cap_max: 206159.525
+        locations.MT_Z6.techs.pv_scale.constraints.energy_cap_max: 1308320.062
+        locations.PA_Z1.techs.wind_onshore.constraints.energy_cap_max: 175310.525
+        locations.PA_Z1.techs.pv_scale.constraints.energy_cap_max: 1112547.562
+        locations.PA_Z2.techs.wind_onshore.constraints.energy_cap_max: 318404.125
+        locations.PA_Z2.techs.pv_scale.constraints.energy_cap_max: 2020641.562
+        locations.PA_Z3.techs.wind_onshore.constraints.energy_cap_max: 136305.0
+        locations.PA_Z3.techs.pv_scale.constraints.energy_cap_max: 865012.5
+        locations.PA_Z4.techs.wind_onshore.constraints.energy_cap_max: 67883.4
+        locations.PA_Z4.techs.pv_scale.constraints.energy_cap_max: 430798.5
+        locations.PA_Z5.techs.wind_onshore.constraints.energy_cap_max: 79197.3
+        locations.PA_Z5.techs.pv_scale.constraints.energy_cap_max: 502598.25
+        locations.PB_Z1.techs.wind_onshore.constraints.energy_cap_max: 160607.85
+        locations.PB_Z1.techs.pv_scale.constraints.energy_cap_max: 1019242.125
+        locations.PE_Z1.techs.wind_onshore.constraints.energy_cap_max: 52238.225
+        locations.PE_Z1.techs.pv_scale.constraints.energy_cap_max: 331511.812
+        locations.PE_Z2.techs.wind_onshore.constraints.energy_cap_max: 190047.65
+        locations.PE_Z2.techs.pv_scale.constraints.energy_cap_max: 1206071.625
+        locations.PI_Z1.techs.wind_onshore.constraints.energy_cap_max: 193143.925
+        locations.PI_Z1.techs.pv_scale.constraints.energy_cap_max: 1225721.062
+        locations.PI_Z2.techs.wind_onshore.constraints.energy_cap_max: 412324.25
+        locations.PI_Z2.techs.pv_scale.constraints.energy_cap_max: 2616673.125
+        locations.PI_Z3.techs.wind_onshore.constraints.energy_cap_max: 180968.125
+        locations.PI_Z3.techs.pv_scale.constraints.energy_cap_max: 1148451.562
+        locations.PR_Z1.techs.wind_onshore.constraints.energy_cap_max: 62162.425
+        locations.PR_Z1.techs.pv_scale.constraints.energy_cap_max: 394492.312
+        locations.PR_Z2.techs.wind_onshore.constraints.energy_cap_max: 308111.05
+        locations.PR_Z2.techs.pv_scale.constraints.energy_cap_max: 1955320.125
+        locations.RJ_Z1.techs.wind_onshore.constraints.energy_cap_max: 21243.625
+        locations.RJ_Z1.techs.pv_scale.constraints.energy_cap_max: 134815.312
+        locations.RN_Z1.techs.wind_onshore.constraints.energy_cap_max: 168357.15
+        locations.RN_Z1.techs.pv_scale.constraints.energy_cap_max: 1068420.375
+        locations.RO_Z1.techs.wind_onshore.constraints.energy_cap_max: 109938.4
+        locations.RO_Z1.techs.pv_scale.constraints.energy_cap_max: 697686.0
+        locations.RO_Z2.techs.wind_onshore.constraints.energy_cap_max: 236494.375
+        locations.RO_Z2.techs.pv_scale.constraints.energy_cap_max: 1500829.688
+        locations.RR_Z1.techs.wind_onshore.constraints.energy_cap_max: 49585.9
+        locations.RR_Z1.techs.pv_scale.constraints.energy_cap_max: 314679.75
+        locations.RS_Z1.techs.wind_onshore.constraints.energy_cap_max: 167002.55
+        locations.RS_Z1.techs.pv_scale.constraints.energy_cap_max: 1059823.875
+        locations.RS_Z2.techs.wind_onshore.constraints.energy_cap_max: 182643.5
+        locations.RS_Z2.techs.pv_scale.constraints.energy_cap_max: 1159083.75
+        locations.RS_Z3.techs.wind_onshore.constraints.energy_cap_max: 304892.575
+        locations.RS_Z3.techs.pv_scale.constraints.energy_cap_max: 1934895.188
+        locations.SC_Z1.techs.wind_onshore.constraints.energy_cap_max: 13211.25
+        locations.SC_Z1.techs.pv_scale.constraints.energy_cap_max: 83840.625
+        locations.SC_Z2.techs.wind_onshore.constraints.energy_cap_max: 38386.725
+        locations.SC_Z2.techs.pv_scale.constraints.energy_cap_max: 243608.062
+        locations.SE_Z1.techs.wind_onshore.constraints.energy_cap_max: 52881.725
+        locations.SE_Z1.techs.pv_scale.constraints.energy_cap_max: 335595.562
+        locations.SP_Z1.techs.wind_onshore.constraints.energy_cap_max: 234135.2
+        locations.SP_Z1.techs.pv_scale.constraints.energy_cap_max: 1485858.0
+        locations.SP_Z2.techs.wind_onshore.constraints.energy_cap_max: 372451.625
+        locations.SP_Z2.techs.pv_scale.constraints.energy_cap_max: 2363635.312
+        locations.SP_Z3.techs.wind_onshore.constraints.energy_cap_max: 63347.7
+        locations.SP_Z3.techs.pv_scale.constraints.energy_cap_max: 402014.25
+        locations.TO_Z1.techs.wind_onshore.constraints.energy_cap_max: 309841.35
+        locations.TO_Z1.techs.pv_scale.constraints.energy_cap_max: 1966300.875
+        locations.TO_Z2.techs.wind_onshore.constraints.energy_cap_max: 216912.8
+        locations.TO_Z2.techs.pv_scale.constraints.energy_cap_max: 1376562.0
+    governance:
+        locations.AC_Z1.techs.wind_onshore.constraints.energy_cap_max: 52406.575
+        locations.AC_Z1.techs.pv_scale.constraints.energy_cap_max: 332580.188
+        locations.AL_Z1.techs.wind_onshore.constraints.energy_cap_max: 9194.575
+        locations.AL_Z1.techs.pv_scale.constraints.energy_cap_max: 58350.188
+        locations.AM_Z1.techs.wind_onshore.constraints.energy_cap_max: 59075.9
+        locations.AM_Z1.techs.pv_scale.constraints.energy_cap_max: 374904.75
+        locations.AP_Z1.techs.wind_onshore.constraints.energy_cap_max: 24773.125
+        locations.AP_Z1.techs.pv_scale.constraints.energy_cap_max: 157214.062
+        locations.BA_Z1.techs.wind_onshore.constraints.energy_cap_max: 33329.4
+        locations.BA_Z1.techs.pv_scale.constraints.energy_cap_max: 211513.5
+        locations.BA_Z2.techs.wind_onshore.constraints.energy_cap_max: 4128.475
+        locations.BA_Z2.techs.pv_scale.constraints.energy_cap_max: 26199.938
+        locations.BA_Z3.techs.wind_onshore.constraints.energy_cap_max: 57044.0
+        locations.BA_Z3.techs.pv_scale.constraints.energy_cap_max: 362010.0
+        locations.BA_Z4.techs.wind_onshore.constraints.energy_cap_max: 36957.375
+        locations.BA_Z4.techs.pv_scale.constraints.energy_cap_max: 234537.188
+        locations.BA_Z5.techs.wind_onshore.constraints.energy_cap_max: 350384.125
+        locations.BA_Z5.techs.pv_scale.constraints.energy_cap_max: 2223591.562
+        locations.BA_Z6.techs.wind_onshore.constraints.energy_cap_max: 98649.2
+        locations.BA_Z6.techs.pv_scale.constraints.energy_cap_max: 626043.0
+        locations.BA_Z7.techs.wind_onshore.constraints.energy_cap_max: 39500.5
+        locations.BA_Z7.techs.pv_scale.constraints.energy_cap_max: 250676.25
+        locations.CE_Z1.techs.wind_onshore.constraints.energy_cap_max: 35693.45
+        locations.CE_Z1.techs.pv_scale.constraints.energy_cap_max: 226516.125
+        locations.CE_Z2.techs.wind_onshore.constraints.energy_cap_max: 32041.1
+        locations.CE_Z2.techs.pv_scale.constraints.energy_cap_max: 203337.75
+        locations.ES_Z1.techs.wind_onshore.constraints.energy_cap_max: 20491.575
+        locations.ES_Z1.techs.pv_scale.constraints.energy_cap_max: 130042.688
+        locations.GO_Z1.techs.wind_onshore.constraints.energy_cap_max: 391166.75
+        locations.GO_Z1.techs.pv_scale.constraints.energy_cap_max: 2482404.375
+        locations.GO_Z2.techs.wind_onshore.constraints.energy_cap_max: 250081.975
+        locations.GO_Z2.techs.pv_scale.constraints.energy_cap_max: 1587058.688
+        locations.GO_Z3.techs.wind_onshore.constraints.energy_cap_max: 82998.175
+        locations.GO_Z3.techs.pv_scale.constraints.energy_cap_max: 526719.188
+        locations.GO_Z4.techs.wind_onshore.constraints.energy_cap_max: 106069.925
+        locations.GO_Z4.techs.pv_scale.constraints.energy_cap_max: 673136.062
+        locations.MA_Z1.techs.wind_onshore.constraints.energy_cap_max: 162060.6
+        locations.MA_Z1.techs.pv_scale.constraints.energy_cap_max: 1028461.5
+        locations.MA_Z2.techs.wind_onshore.constraints.energy_cap_max: 87640.8
+        locations.MA_Z2.techs.pv_scale.constraints.energy_cap_max: 556182.0
+        locations.MA_Z3.techs.wind_onshore.constraints.energy_cap_max: 183389.05
+        locations.MA_Z3.techs.pv_scale.constraints.energy_cap_max: 1163815.125
+        locations.MG_Z1.techs.wind_onshore.constraints.energy_cap_max: 293.8
+        locations.MG_Z1.techs.pv_scale.constraints.energy_cap_max: 1864.5
+        locations.MG_Z2.techs.wind_onshore.constraints.energy_cap_max: 1805.05
+        locations.MG_Z2.techs.pv_scale.constraints.energy_cap_max: 11455.125
+        locations.MG_Z3.techs.wind_onshore.constraints.energy_cap_max: 203501.675
+        locations.MG_Z3.techs.pv_scale.constraints.energy_cap_max: 1291452.938
+        locations.MG_Z4.techs.wind_onshore.constraints.energy_cap_max: 4233.125
+        locations.MG_Z4.techs.pv_scale.constraints.energy_cap_max: 26864.062
+        locations.MG_Z5.techs.wind_onshore.constraints.energy_cap_max: 5435.625
+        locations.MG_Z5.techs.pv_scale.constraints.energy_cap_max: 34495.312
+        locations.MG_Z6.techs.wind_onshore.constraints.energy_cap_max: 160033.25
+        locations.MG_Z6.techs.pv_scale.constraints.energy_cap_max: 1015595.625
+        locations.MG_Z7.techs.wind_onshore.constraints.energy_cap_max: 187474.95
+        locations.MG_Z7.techs.pv_scale.constraints.energy_cap_max: 1189744.875
+        locations.MG_Z8.techs.wind_onshore.constraints.energy_cap_max: 53633.775
+        locations.MG_Z8.techs.pv_scale.constraints.energy_cap_max: 340368.188
+        locations.MS_Z1.techs.wind_onshore.constraints.energy_cap_max: 279512.35
+        locations.MS_Z1.techs.pv_scale.constraints.energy_cap_max: 1773828.375
+        locations.MS_Z2.techs.wind_onshore.constraints.energy_cap_max: 407420.975
+        locations.MS_Z2.techs.pv_scale.constraints.energy_cap_max: 2585556.188
+        locations.MS_Z3.techs.wind_onshore.constraints.energy_cap_max: 276948.425
+        locations.MS_Z3.techs.pv_scale.constraints.energy_cap_max: 1757557.312
+        locations.MS_Z4.techs.wind_onshore.constraints.energy_cap_max: 394480.125
+        locations.MS_Z4.techs.pv_scale.constraints.energy_cap_max: 2503431.562
+        locations.MT_Z1.techs.wind_onshore.constraints.energy_cap_max: 640719.95
+        locations.MT_Z1.techs.pv_scale.constraints.energy_cap_max: 4066107.375
+        locations.MT_Z2.techs.wind_onshore.constraints.energy_cap_max: 506531.35
+        locations.MT_Z2.techs.pv_scale.constraints.energy_cap_max: 3214525.875
+        locations.MT_Z3.techs.wind_onshore.constraints.energy_cap_max: 514253.675
+        locations.MT_Z3.techs.pv_scale.constraints.energy_cap_max: 3263532.938
+        locations.MT_Z4.techs.wind_onshore.constraints.energy_cap_max: 182304.85
+        locations.MT_Z4.techs.pv_scale.constraints.energy_cap_max: 1156934.625
+        locations.MT_Z5.techs.wind_onshore.constraints.energy_cap_max: 265338.45
+        locations.MT_Z5.techs.pv_scale.constraints.energy_cap_max: 1683878.625
+        locations.MT_Z6.techs.wind_onshore.constraints.energy_cap_max: 206503.375
+        locations.MT_Z6.techs.pv_scale.constraints.energy_cap_max: 1310502.188
+        locations.PA_Z1.techs.wind_onshore.constraints.energy_cap_max: 90982.45
+        locations.PA_Z1.techs.pv_scale.constraints.energy_cap_max: 577388.625
+        locations.PA_Z2.techs.wind_onshore.constraints.energy_cap_max: 326933.75
+        locations.PA_Z2.techs.pv_scale.constraints.energy_cap_max: 2074771.875
+        locations.PA_Z3.techs.wind_onshore.constraints.energy_cap_max: 34080.475
+        locations.PA_Z3.techs.pv_scale.constraints.energy_cap_max: 216279.938
+        locations.PA_Z4.techs.wind_onshore.constraints.energy_cap_max: 9788.35
+        locations.PA_Z4.techs.pv_scale.constraints.energy_cap_max: 62118.375
+        locations.PA_Z5.techs.wind_onshore.constraints.energy_cap_max: 8378.5
+        locations.PA_Z5.techs.pv_scale.constraints.energy_cap_max: 53171.25
+        locations.PB_Z1.techs.wind_onshore.constraints.energy_cap_max: 30653.675
+        locations.PB_Z1.techs.pv_scale.constraints.energy_cap_max: 194532.938
+        locations.PE_Z1.techs.wind_onshore.constraints.energy_cap_max: 3887.65
+        locations.PE_Z1.techs.pv_scale.constraints.energy_cap_max: 24671.625
+        locations.PE_Z2.techs.wind_onshore.constraints.energy_cap_max: 14756.3
+        locations.PE_Z2.techs.pv_scale.constraints.energy_cap_max: 93645.75
+        locations.PI_Z1.techs.wind_onshore.constraints.energy_cap_max: 49602.8
+        locations.PI_Z1.techs.pv_scale.constraints.energy_cap_max: 314787.0
+        locations.PI_Z2.techs.wind_onshore.constraints.energy_cap_max: 225939.35
+        locations.PI_Z2.techs.pv_scale.constraints.energy_cap_max: 1433845.875
+        locations.PI_Z3.techs.wind_onshore.constraints.energy_cap_max: 17312.425
+        locations.PI_Z3.techs.pv_scale.constraints.energy_cap_max: 109867.312
+        locations.PR_Z1.techs.wind_onshore.constraints.energy_cap_max: 22966.125
+        locations.PR_Z1.techs.pv_scale.constraints.energy_cap_max: 145746.562
+        locations.PR_Z2.techs.wind_onshore.constraints.energy_cap_max: 113906.65
+        locations.PR_Z2.techs.pv_scale.constraints.energy_cap_max: 722869.125
+        locations.RJ_Z1.techs.wind_onshore.constraints.energy_cap_max: 3840.525
+        locations.RJ_Z1.techs.pv_scale.constraints.energy_cap_max: 24372.562
+        locations.RN_Z1.techs.wind_onshore.constraints.energy_cap_max: 38778.675
+        locations.RN_Z1.techs.pv_scale.constraints.energy_cap_max: 246095.438
+        locations.RO_Z1.techs.wind_onshore.constraints.energy_cap_max: 49331.75
+        locations.RO_Z1.techs.pv_scale.constraints.energy_cap_max: 313066.875
+        locations.RO_Z2.techs.wind_onshore.constraints.energy_cap_max: 114496.2
+        locations.RO_Z2.techs.pv_scale.constraints.energy_cap_max: 726610.5
+        locations.RR_Z1.techs.wind_onshore.constraints.energy_cap_max: 24892.075
+        locations.RR_Z1.techs.pv_scale.constraints.energy_cap_max: 157968.938
+        locations.RS_Z1.techs.wind_onshore.constraints.energy_cap_max: 88238.15
+        locations.RS_Z1.techs.pv_scale.constraints.energy_cap_max: 559972.875
+        locations.RS_Z2.techs.wind_onshore.constraints.energy_cap_max: 55602.625
+        locations.RS_Z2.techs.pv_scale.constraints.energy_cap_max: 352862.812
+        locations.RS_Z3.techs.wind_onshore.constraints.energy_cap_max: 163868.575
+        locations.RS_Z3.techs.pv_scale.constraints.energy_cap_max: 1039935.188
+        locations.SC_Z1.techs.wind_onshore.constraints.energy_cap_max: 912.275
+        locations.SC_Z1.techs.pv_scale.constraints.energy_cap_max: 5789.438
+        locations.SC_Z2.techs.wind_onshore.constraints.energy_cap_max: 18401.5
+        locations.SC_Z2.techs.pv_scale.constraints.energy_cap_max: 116778.75
+        locations.SE_Z1.techs.wind_onshore.constraints.energy_cap_max: 9891.7
+        locations.SE_Z1.techs.pv_scale.constraints.energy_cap_max: 62774.25
+        locations.SP_Z1.techs.wind_onshore.constraints.energy_cap_max: 132891.85
+        locations.SP_Z1.techs.pv_scale.constraints.energy_cap_max: 843352.125
+        locations.SP_Z2.techs.wind_onshore.constraints.energy_cap_max: 245477.7
+        locations.SP_Z2.techs.pv_scale.constraints.energy_cap_max: 1557839.25
+        locations.SP_Z3.techs.wind_onshore.constraints.energy_cap_max: 29253.25
+        locations.SP_Z3.techs.pv_scale.constraints.energy_cap_max: 185645.625
+        locations.TO_Z1.techs.wind_onshore.constraints.energy_cap_max: 328720.6
+        locations.TO_Z1.techs.pv_scale.constraints.energy_cap_max: 2086111.5
+        locations.TO_Z2.techs.wind_onshore.constraints.energy_cap_max: 244353.2
+        locations.TO_Z2.techs.pv_scale.constraints.energy_cap_max: 1550703.0
+    degraded_pastures:
+        locations.AC_Z1.techs.wind_onshore.constraints.energy_cap_max: 25660.375
+        locations.AC_Z1.techs.pv_scale.constraints.energy_cap_max: 162844.688
+        locations.AL_Z1.techs.wind_onshore.constraints.energy_cap_max: 26639.925
+        locations.AL_Z1.techs.pv_scale.constraints.energy_cap_max: 169061.062
+        locations.AM_Z1.techs.wind_onshore.constraints.energy_cap_max: 4808.05
+        locations.AM_Z1.techs.pv_scale.constraints.energy_cap_max: 30512.625
+        locations.AP_Z1.techs.wind_onshore.constraints.energy_cap_max: 1439.425
+        locations.AP_Z1.techs.pv_scale.constraints.energy_cap_max: 9134.812
+        locations.BA_Z1.techs.wind_onshore.constraints.energy_cap_max: 107169.725
+        locations.BA_Z1.techs.pv_scale.constraints.energy_cap_max: 680115.562
+        locations.BA_Z2.techs.wind_onshore.constraints.energy_cap_max: 4361.5
+        locations.BA_Z2.techs.pv_scale.constraints.energy_cap_max: 27678.75
+        locations.BA_Z3.techs.wind_onshore.constraints.energy_cap_max: 124495.15
+        locations.BA_Z3.techs.pv_scale.constraints.energy_cap_max: 790065.375
+        locations.BA_Z4.techs.wind_onshore.constraints.energy_cap_max: 14908.075
+        locations.BA_Z4.techs.pv_scale.constraints.energy_cap_max: 94608.938
+        locations.BA_Z5.techs.wind_onshore.constraints.energy_cap_max: 27713.725
+        locations.BA_Z5.techs.pv_scale.constraints.energy_cap_max: 175875.562
+        locations.BA_Z6.techs.wind_onshore.constraints.energy_cap_max: 36340.2
+        locations.BA_Z6.techs.pv_scale.constraints.energy_cap_max: 230620.5
+        locations.BA_Z7.techs.wind_onshore.constraints.energy_cap_max: 84697.275
+        locations.BA_Z7.techs.pv_scale.constraints.energy_cap_max: 537501.938
+        locations.CE_Z1.techs.wind_onshore.constraints.energy_cap_max: 63250.525
+        locations.CE_Z1.techs.pv_scale.constraints.energy_cap_max: 401397.562
+        locations.CE_Z2.techs.wind_onshore.constraints.energy_cap_max: 9826.7
+        locations.CE_Z2.techs.pv_scale.constraints.energy_cap_max: 62361.75
+        locations.ES_Z1.techs.wind_onshore.constraints.energy_cap_max: 16832.4
+        locations.ES_Z1.techs.pv_scale.constraints.energy_cap_max: 106821.0
+        locations.GO_Z1.techs.wind_onshore.constraints.energy_cap_max: 107536.65
+        locations.GO_Z1.techs.pv_scale.constraints.energy_cap_max: 682444.125
+        locations.GO_Z2.techs.wind_onshore.constraints.energy_cap_max: 138295.95
+        locations.GO_Z2.techs.pv_scale.constraints.energy_cap_max: 877647.375
+        locations.GO_Z3.techs.wind_onshore.constraints.energy_cap_max: 49377.575
+        locations.GO_Z3.techs.pv_scale.constraints.energy_cap_max: 313357.688
+        locations.GO_Z4.techs.wind_onshore.constraints.energy_cap_max: 44552.3
+        locations.GO_Z4.techs.pv_scale.constraints.energy_cap_max: 282735.75
+        locations.MA_Z1.techs.wind_onshore.constraints.energy_cap_max: 37419.525
+        locations.MA_Z1.techs.pv_scale.constraints.energy_cap_max: 237470.062
+        locations.MA_Z2.techs.wind_onshore.constraints.energy_cap_max: 112807.5
+        locations.MA_Z2.techs.pv_scale.constraints.energy_cap_max: 715893.75
+        locations.MA_Z3.techs.wind_onshore.constraints.energy_cap_max: 21691.475
+        locations.MA_Z3.techs.pv_scale.constraints.energy_cap_max: 137657.438
+        locations.MG_Z1.techs.wind_onshore.constraints.energy_cap_max: 329.55
+        locations.MG_Z1.techs.pv_scale.constraints.energy_cap_max: 2091.375
+        locations.MG_Z2.techs.wind_onshore.constraints.energy_cap_max: 2475.525
+        locations.MG_Z2.techs.pv_scale.constraints.energy_cap_max: 15710.062
+        locations.MG_Z3.techs.wind_onshore.constraints.energy_cap_max: 101366.85
+        locations.MG_Z3.techs.pv_scale.constraints.energy_cap_max: 643289.625
+        locations.MG_Z4.techs.wind_onshore.constraints.energy_cap_max: 1742.975
+        locations.MG_Z4.techs.pv_scale.constraints.energy_cap_max: 11061.188
+        locations.MG_Z5.techs.wind_onshore.constraints.energy_cap_max: 6975.8
+        locations.MG_Z5.techs.pv_scale.constraints.energy_cap_max: 44269.5
+        locations.MG_Z6.techs.wind_onshore.constraints.energy_cap_max: 62065.25
+        locations.MG_Z6.techs.pv_scale.constraints.energy_cap_max: 393875.625
+        locations.MG_Z7.techs.wind_onshore.constraints.energy_cap_max: 60490.625
+        locations.MG_Z7.techs.pv_scale.constraints.energy_cap_max: 383882.812
+        locations.MG_Z8.techs.wind_onshore.constraints.energy_cap_max: 41195.05
+        locations.MG_Z8.techs.pv_scale.constraints.energy_cap_max: 261430.125
+        locations.MS_Z1.techs.wind_onshore.constraints.energy_cap_max: 55316.625
+        locations.MS_Z1.techs.pv_scale.constraints.energy_cap_max: 351047.812
+        locations.MS_Z2.techs.wind_onshore.constraints.energy_cap_max: 61871.225
+        locations.MS_Z2.techs.pv_scale.constraints.energy_cap_max: 392644.312
+        locations.MS_Z3.techs.wind_onshore.constraints.energy_cap_max: 127378.55
+        locations.MS_Z3.techs.pv_scale.constraints.energy_cap_max: 808363.875
+        locations.MS_Z4.techs.wind_onshore.constraints.energy_cap_max: 186934.475
+        locations.MS_Z4.techs.pv_scale.constraints.energy_cap_max: 1186314.938
+        locations.MT_Z1.techs.wind_onshore.constraints.energy_cap_max: 161292.625
+        locations.MT_Z1.techs.pv_scale.constraints.energy_cap_max: 1023587.812
+        locations.MT_Z2.techs.wind_onshore.constraints.energy_cap_max: 141163.75
+        locations.MT_Z2.techs.pv_scale.constraints.energy_cap_max: 895846.875
+        locations.MT_Z3.techs.wind_onshore.constraints.energy_cap_max: 160510.675
+        locations.MT_Z3.techs.pv_scale.constraints.energy_cap_max: 1018625.438
+        locations.MT_Z4.techs.wind_onshore.constraints.energy_cap_max: 133099.525
+        locations.MT_Z4.techs.pv_scale.constraints.energy_cap_max: 844670.062
+        locations.MT_Z5.techs.wind_onshore.constraints.energy_cap_max: 84872.45
+        locations.MT_Z5.techs.pv_scale.constraints.energy_cap_max: 538613.625
+        locations.MT_Z6.techs.wind_onshore.constraints.energy_cap_max: 56607.525
+        locations.MT_Z6.techs.pv_scale.constraints.energy_cap_max: 359240.062
+        locations.PA_Z1.techs.wind_onshore.constraints.energy_cap_max: 50941.8
+        locations.PA_Z1.techs.pv_scale.constraints.energy_cap_max: 323284.5
+        locations.PA_Z2.techs.wind_onshore.constraints.energy_cap_max: 338126.1
+        locations.PA_Z2.techs.pv_scale.constraints.energy_cap_max: 2145800.25
+        locations.PA_Z3.techs.wind_onshore.constraints.energy_cap_max: 21880.95
+        locations.PA_Z3.techs.pv_scale.constraints.energy_cap_max: 138859.875
+        locations.PA_Z4.techs.wind_onshore.constraints.energy_cap_max: 15410.2
+        locations.PA_Z4.techs.pv_scale.constraints.energy_cap_max: 97795.5
+        locations.PA_Z5.techs.wind_onshore.constraints.energy_cap_max: 5898.425
+        locations.PA_Z5.techs.pv_scale.constraints.energy_cap_max: 37432.312
+        locations.PB_Z1.techs.wind_onshore.constraints.energy_cap_max: 50393.85
+        locations.PB_Z1.techs.pv_scale.constraints.energy_cap_max: 319807.125
+        locations.PE_Z1.techs.wind_onshore.constraints.energy_cap_max: 21058.05
+        locations.PE_Z1.techs.pv_scale.constraints.energy_cap_max: 133637.625
+        locations.PE_Z2.techs.wind_onshore.constraints.energy_cap_max: 47068.125
+        locations.PE_Z2.techs.pv_scale.constraints.energy_cap_max: 298701.562
+        locations.PI_Z1.techs.wind_onshore.constraints.energy_cap_max: 21791.25
+        locations.PI_Z1.techs.pv_scale.constraints.energy_cap_max: 138290.625
+        locations.PI_Z2.techs.wind_onshore.constraints.energy_cap_max: 19906.575
+        locations.PI_Z2.techs.pv_scale.constraints.energy_cap_max: 126330.188
+        locations.PI_Z3.techs.wind_onshore.constraints.energy_cap_max: 19394.05
+        locations.PI_Z3.techs.pv_scale.constraints.energy_cap_max: 123077.625
+        locations.PR_Z1.techs.wind_onshore.constraints.energy_cap_max: 1479.4
+        locations.PR_Z1.techs.pv_scale.constraints.energy_cap_max: 9388.5
+        locations.PR_Z2.techs.wind_onshore.constraints.energy_cap_max: 32926.075
+        locations.PR_Z2.techs.pv_scale.constraints.energy_cap_max: 208953.938
+        locations.RJ_Z1.techs.wind_onshore.constraints.energy_cap_max: 7618.0
+        locations.RJ_Z1.techs.pv_scale.constraints.energy_cap_max: 48345.0
+        locations.RN_Z1.techs.wind_onshore.constraints.energy_cap_max: 31700.825
+        locations.RN_Z1.techs.pv_scale.constraints.energy_cap_max: 201178.312
+        locations.RO_Z1.techs.wind_onshore.constraints.energy_cap_max: 88219.3
+        locations.RO_Z1.techs.pv_scale.constraints.energy_cap_max: 559853.25
+        locations.RO_Z2.techs.wind_onshore.constraints.energy_cap_max: 171229.825
+        locations.RO_Z2.techs.pv_scale.constraints.energy_cap_max: 1086650.812
+        locations.RR_Z1.techs.wind_onshore.constraints.energy_cap_max: 8742.175
+        locations.RR_Z1.techs.pv_scale.constraints.energy_cap_max: 55479.188
+        locations.RS_Z1.techs.wind_onshore.constraints.energy_cap_max: 182.65
+        locations.RS_Z1.techs.pv_scale.constraints.energy_cap_max: 1159.125
+        locations.RS_Z2.techs.wind_onshore.constraints.energy_cap_max: 1072.5
+        locations.RS_Z2.techs.pv_scale.constraints.energy_cap_max: 6806.25
+        locations.RS_Z3.techs.wind_onshore.constraints.energy_cap_max: 562.25
+        locations.RS_Z3.techs.pv_scale.constraints.energy_cap_max: 3568.125
+        locations.SC_Z1.techs.wind_onshore.constraints.energy_cap_max: 599.625
+        locations.SC_Z1.techs.pv_scale.constraints.energy_cap_max: 3805.312
+        locations.SC_Z2.techs.wind_onshore.constraints.energy_cap_max: 1927.25
+        locations.SC_Z2.techs.pv_scale.constraints.energy_cap_max: 12230.625
+        locations.SE_Z1.techs.wind_onshore.constraints.energy_cap_max: 26499.525
+        locations.SE_Z1.techs.pv_scale.constraints.energy_cap_max: 168170.062
+        locations.SP_Z1.techs.wind_onshore.constraints.energy_cap_max: 69239.95
+        locations.SP_Z1.techs.pv_scale.constraints.energy_cap_max: 439407.375
+        locations.SP_Z2.techs.wind_onshore.constraints.energy_cap_max: 24141.65
+        locations.SP_Z2.techs.pv_scale.constraints.energy_cap_max: 153206.625
+        locations.SP_Z3.techs.wind_onshore.constraints.energy_cap_max: 5263.375
+        locations.SP_Z3.techs.pv_scale.constraints.energy_cap_max: 33402.188
+        locations.TO_Z1.techs.wind_onshore.constraints.energy_cap_max: 165322.625
+        locations.TO_Z1.techs.pv_scale.constraints.energy_cap_max: 1049162.812
+        locations.TO_Z2.techs.wind_onshore.constraints.energy_cap_max: 61602.45
+        locations.TO_Z2.techs.pv_scale.constraints.energy_cap_max: 390938.625
+    integrated:
+        locations.AC_Z1.techs.wind_onshore.constraints.energy_cap_max: 7855.9
+        locations.AC_Z1.techs.pv_scale.constraints.energy_cap_max: 49854.75
+        locations.AL_Z1.techs.wind_onshore.constraints.energy_cap_max: 1160.9
+        locations.AL_Z1.techs.pv_scale.constraints.energy_cap_max: 7367.25
+        locations.AM_Z1.techs.wind_onshore.constraints.energy_cap_max: 136.5
+        locations.AM_Z1.techs.pv_scale.constraints.energy_cap_max: 866.25
+        locations.AP_Z1.techs.wind_onshore.constraints.energy_cap_max: 28.275
+        locations.AP_Z1.techs.pv_scale.constraints.energy_cap_max: 179.438
+        locations.BA_Z1.techs.wind_onshore.constraints.energy_cap_max: 5925.4
+        locations.BA_Z1.techs.pv_scale.constraints.energy_cap_max: 37603.5
+        locations.BA_Z2.techs.wind_onshore.constraints.energy_cap_max: 551.2
+        locations.BA_Z2.techs.pv_scale.constraints.energy_cap_max: 3498.0
+        locations.BA_Z3.techs.wind_onshore.constraints.energy_cap_max: 10964.2
+        locations.BA_Z3.techs.pv_scale.constraints.energy_cap_max: 69580.5
+        locations.BA_Z4.techs.wind_onshore.constraints.energy_cap_max: 6128.2
+        locations.BA_Z4.techs.pv_scale.constraints.energy_cap_max: 38890.5
+        locations.BA_Z5.techs.wind_onshore.constraints.energy_cap_max: 11399.7
+        locations.BA_Z5.techs.pv_scale.constraints.energy_cap_max: 72344.25
+        locations.BA_Z6.techs.wind_onshore.constraints.energy_cap_max: 5022.875
+        locations.BA_Z6.techs.pv_scale.constraints.energy_cap_max: 31875.938
+        locations.BA_Z7.techs.wind_onshore.constraints.energy_cap_max: 3201.9
+        locations.BA_Z7.techs.pv_scale.constraints.energy_cap_max: 20319.75
+        locations.CE_Z1.techs.wind_onshore.constraints.energy_cap_max: 4594.525
+        locations.CE_Z1.techs.pv_scale.constraints.energy_cap_max: 29157.562
+        locations.CE_Z2.techs.wind_onshore.constraints.energy_cap_max: 1612.0
+        locations.CE_Z2.techs.pv_scale.constraints.energy_cap_max: 10230.0
+        locations.ES_Z1.techs.wind_onshore.constraints.energy_cap_max: 3779.75
+        locations.ES_Z1.techs.pv_scale.constraints.energy_cap_max: 23986.875
+        locations.GO_Z1.techs.wind_onshore.constraints.energy_cap_max: 46775.95
+        locations.GO_Z1.techs.pv_scale.constraints.energy_cap_max: 296847.375
+        locations.GO_Z2.techs.wind_onshore.constraints.energy_cap_max: 85217.6
+        locations.GO_Z2.techs.pv_scale.constraints.energy_cap_max: 540804.0
+        locations.GO_Z3.techs.wind_onshore.constraints.energy_cap_max: 22774.05
+        locations.GO_Z3.techs.pv_scale.constraints.energy_cap_max: 144527.625
+        locations.GO_Z4.techs.wind_onshore.constraints.energy_cap_max: 12793.3
+        locations.GO_Z4.techs.pv_scale.constraints.energy_cap_max: 81188.25
+        locations.MA_Z1.techs.wind_onshore.constraints.energy_cap_max: 26078.325
+        locations.MA_Z1.techs.pv_scale.constraints.energy_cap_max: 165497.062
+        locations.MA_Z2.techs.wind_onshore.constraints.energy_cap_max: 21748.025
+        locations.MA_Z2.techs.pv_scale.constraints.energy_cap_max: 138016.312
+        locations.MA_Z3.techs.wind_onshore.constraints.energy_cap_max: 13209.3
+        locations.MA_Z3.techs.pv_scale.constraints.energy_cap_max: 83828.25
+        locations.MG_Z1.techs.wind_onshore.constraints.energy_cap_max: 87.1
+        locations.MG_Z1.techs.pv_scale.constraints.energy_cap_max: 552.75
+        locations.MG_Z2.techs.wind_onshore.constraints.energy_cap_max: 717.925
+        locations.MG_Z2.techs.pv_scale.constraints.energy_cap_max: 4556.062
+        locations.MG_Z3.techs.wind_onshore.constraints.energy_cap_max: 20836.4
+        locations.MG_Z3.techs.pv_scale.constraints.energy_cap_max: 132231.0
+        locations.MG_Z4.techs.wind_onshore.constraints.energy_cap_max: 468.975
+        locations.MG_Z4.techs.pv_scale.constraints.energy_cap_max: 2976.188
+        locations.MG_Z5.techs.wind_onshore.constraints.energy_cap_max: 906.75
+        locations.MG_Z5.techs.pv_scale.constraints.energy_cap_max: 5754.375
+        locations.MG_Z6.techs.wind_onshore.constraints.energy_cap_max: 9989.525
+        locations.MG_Z6.techs.pv_scale.constraints.energy_cap_max: 63395.062
+        locations.MG_Z7.techs.wind_onshore.constraints.energy_cap_max: 25019.15
+        locations.MG_Z7.techs.pv_scale.constraints.energy_cap_max: 158775.375
+        locations.MG_Z8.techs.wind_onshore.constraints.energy_cap_max: 7134.4
+        locations.MG_Z8.techs.pv_scale.constraints.energy_cap_max: 45276.0
+        locations.MS_Z1.techs.wind_onshore.constraints.energy_cap_max: 43959.825
+        locations.MS_Z1.techs.pv_scale.constraints.energy_cap_max: 278975.812
+        locations.MS_Z2.techs.wind_onshore.constraints.energy_cap_max: 27722.5
+        locations.MS_Z2.techs.pv_scale.constraints.energy_cap_max: 175931.25
+        locations.MS_Z3.techs.wind_onshore.constraints.energy_cap_max: 61735.7
+        locations.MS_Z3.techs.pv_scale.constraints.energy_cap_max: 391784.25
+        locations.MS_Z4.techs.wind_onshore.constraints.energy_cap_max: 128342.175
+        locations.MS_Z4.techs.pv_scale.constraints.energy_cap_max: 814479.188
+        locations.MT_Z1.techs.wind_onshore.constraints.energy_cap_max: 24241.1
+        locations.MT_Z1.techs.pv_scale.constraints.energy_cap_max: 153837.75
+        locations.MT_Z2.techs.wind_onshore.constraints.energy_cap_max: 48269.975
+        locations.MT_Z2.techs.pv_scale.constraints.energy_cap_max: 306328.688
+        locations.MT_Z3.techs.wind_onshore.constraints.energy_cap_max: 39665.275
+        locations.MT_Z3.techs.pv_scale.constraints.energy_cap_max: 251721.938
+        locations.MT_Z4.techs.wind_onshore.constraints.energy_cap_max: 19696.625
+        locations.MT_Z4.techs.pv_scale.constraints.energy_cap_max: 124997.812
+        locations.MT_Z5.techs.wind_onshore.constraints.energy_cap_max: 13277.55
+        locations.MT_Z5.techs.pv_scale.constraints.energy_cap_max: 84261.375
+        locations.MT_Z6.techs.wind_onshore.constraints.energy_cap_max: 24354.2
+        locations.MT_Z6.techs.pv_scale.constraints.energy_cap_max: 154555.5
+        locations.PA_Z1.techs.wind_onshore.constraints.energy_cap_max: 4618.575
+        locations.PA_Z1.techs.pv_scale.constraints.energy_cap_max: 29310.188
+        locations.PA_Z2.techs.wind_onshore.constraints.energy_cap_max: 67720.9
+        locations.PA_Z2.techs.pv_scale.constraints.energy_cap_max: 429767.25
+        locations.PA_Z3.techs.wind_onshore.constraints.energy_cap_max: 645.775
+        locations.PA_Z3.techs.pv_scale.constraints.energy_cap_max: 4098.188
+        locations.PA_Z4.techs.wind_onshore.constraints.energy_cap_max: 1886.95
+        locations.PA_Z4.techs.pv_scale.constraints.energy_cap_max: 11974.875
+        locations.PA_Z5.techs.wind_onshore.constraints.energy_cap_max: 1154.075
+        locations.PA_Z5.techs.pv_scale.constraints.energy_cap_max: 7323.938
+        locations.PB_Z1.techs.wind_onshore.constraints.energy_cap_max: 4289.35
+        locations.PB_Z1.techs.pv_scale.constraints.energy_cap_max: 27220.875
+        locations.PE_Z1.techs.wind_onshore.constraints.energy_cap_max: 833.95
+        locations.PE_Z1.techs.pv_scale.constraints.energy_cap_max: 5292.375
+        locations.PE_Z2.techs.wind_onshore.constraints.energy_cap_max: 823.55
+        locations.PE_Z2.techs.pv_scale.constraints.energy_cap_max: 5226.375
+        locations.PI_Z1.techs.wind_onshore.constraints.energy_cap_max: 1980.55
+        locations.PI_Z1.techs.pv_scale.constraints.energy_cap_max: 12568.875
+        locations.PI_Z2.techs.wind_onshore.constraints.energy_cap_max: 3856.775
+        locations.PI_Z2.techs.pv_scale.constraints.energy_cap_max: 24475.688
+        locations.PI_Z3.techs.wind_onshore.constraints.energy_cap_max: 865.8
+        locations.PI_Z3.techs.pv_scale.constraints.energy_cap_max: 5494.5
+        locations.PR_Z1.techs.wind_onshore.constraints.energy_cap_max: 437.775
+        locations.PR_Z1.techs.pv_scale.constraints.energy_cap_max: 2778.188
+        locations.PR_Z2.techs.wind_onshore.constraints.energy_cap_max: 14942.2
+        locations.PR_Z2.techs.pv_scale.constraints.energy_cap_max: 94825.5
+        locations.RJ_Z1.techs.wind_onshore.constraints.energy_cap_max: 833.625
+        locations.RJ_Z1.techs.pv_scale.constraints.energy_cap_max: 5290.312
+        locations.RN_Z1.techs.wind_onshore.constraints.energy_cap_max: 3050.45
+        locations.RN_Z1.techs.pv_scale.constraints.energy_cap_max: 19358.625
+        locations.RO_Z1.techs.wind_onshore.constraints.energy_cap_max: 11919.375
+        locations.RO_Z1.techs.pv_scale.constraints.energy_cap_max: 75642.188
+        locations.RO_Z2.techs.wind_onshore.constraints.energy_cap_max: 29950.375
+        locations.RO_Z2.techs.pv_scale.constraints.energy_cap_max: 190069.688
+        locations.RR_Z1.techs.wind_onshore.constraints.energy_cap_max: 292.5
+        locations.RR_Z1.techs.pv_scale.constraints.energy_cap_max: 1856.25
+        locations.RS_Z1.techs.wind_onshore.constraints.energy_cap_max: 5.2
+        locations.RS_Z1.techs.pv_scale.constraints.energy_cap_max: 33.0
+        locations.RS_Z2.techs.wind_onshore.constraints.energy_cap_max: 232.05
+        locations.RS_Z2.techs.pv_scale.constraints.energy_cap_max: 1472.625
+        locations.RS_Z3.techs.wind_onshore.constraints.energy_cap_max: 46.8
+        locations.RS_Z3.techs.pv_scale.constraints.energy_cap_max: 297.0
+        locations.SC_Z1.techs.wind_onshore.constraints.energy_cap_max: 27.625
+        locations.SC_Z1.techs.pv_scale.constraints.energy_cap_max: 175.312
+        locations.SC_Z2.techs.wind_onshore.constraints.energy_cap_max: 546.0
+        locations.SC_Z2.techs.pv_scale.constraints.energy_cap_max: 3465.0
+        locations.SE_Z1.techs.wind_onshore.constraints.energy_cap_max: 2825.875
+        locations.SE_Z1.techs.pv_scale.constraints.energy_cap_max: 17933.438
+        locations.SP_Z1.techs.wind_onshore.constraints.energy_cap_max: 14880.775
+        locations.SP_Z1.techs.pv_scale.constraints.energy_cap_max: 94435.688
+        locations.SP_Z2.techs.wind_onshore.constraints.energy_cap_max: 8552.375
+        locations.SP_Z2.techs.pv_scale.constraints.energy_cap_max: 54274.688
+        locations.SP_Z3.techs.wind_onshore.constraints.energy_cap_max: 1860.95
+        locations.SP_Z3.techs.pv_scale.constraints.energy_cap_max: 11809.875
+        locations.TO_Z1.techs.wind_onshore.constraints.energy_cap_max: 57110.3
+        locations.TO_Z1.techs.pv_scale.constraints.energy_cap_max: 362430.75
+        locations.TO_Z2.techs.wind_onshore.constraints.energy_cap_max: 15784.925
+        locations.TO_Z2.techs.pv_scale.constraints.energy_cap_max: 100173.562

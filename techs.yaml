@@ -1,0 +1,90 @@
+import:
+
+    - techs/battery.yaml
+  #  - techs/substation.yaml
+    - techs/fossil.yaml
+    - techs/hydro.yaml
+    - techs/dummy_h2.yaml
+    - techs/nuclear.yaml
+   # - techs/offshorewind.yaml
+    - techs/solar.yaml
+    - techs/wind.yaml
+
+techs:
+
+    demand_electricity:
+        essentials:
+            name: 'Demand-Electricity'
+            carrier: electricity
+            parent: demand
+        constraints:
+            resource: file=demand_baseline_electricity.csv
+            resource_scale: 1
+            resource_unit: energy
+
+    demand_hydrogen:
+        essentials:
+            name: 'Demand-Electricity'
+            carrier: hydrogen
+            parent: demand
+        constraints:
+            resource: file=demand\demand_hydrogen.csv
+            resource_scale: 1
+            resource_unit: energy
+                      
+
+#    transmission_lines_cost:
+ #       essentials:
+  #          name: 'Free transmission'
+  #          parent: transmission
+  #          carrier: electricity_transmission_cost
+  #      constraints:
+  #          energy_cap_max: inf
+  #          energy_eff: 0.95
+  #          lifetime: 1            
+  #      costs:
+  #          monetary:
+  #             interest_rate: 0
+  #             energy_cap_per_distance: 1910.17  # US$/MW/km average price according to the voltage
+   #            om_prod: 0
+
+    transmission_lines_free:
+        essentials:
+            name: 'Free transmission'
+            parent: transmission
+            carrier: electricity
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 0.95
+            lifetime: 25            
+        costs:
+            monetary:
+               interest_rate: 0
+               energy_cap: 0
+               energy_cap_per_distance: 0
+               om_prod: 0
+
+    hydrogen_transport:
+        essentials:
+            name: 'Free transmission'
+            parent: transmission
+            carrier: hydrogen
+        constraints:
+            energy_cap_max: inf
+            energy_eff: 1.0
+            lifetime: 1
+        costs:
+            monetary:
+               interest_rate: 0
+               energy_cap: 0
+               om_prod: 0
+
+
+
+
+
+ 
+ 
+ 
+ 
+            

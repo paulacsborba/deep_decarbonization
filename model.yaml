@@ -1,0 +1,163 @@
+import:
+    - techs.yaml
+    - locations/locations_hydro.yaml
+ #   - locations/locations_links_cost.yaml
+    - locations/locations_links_free.yaml
+    - locations/locations_nuclear.yaml
+    - locations/locations_pv.yaml
+    - locations/locations_pv_rooftop.yaml
+    - locations/locations_wind_onshore.yaml
+    - locations/locations_wind_onshore_existing.yaml
+    - locations/locations_pv_existing.yaml
+ #   - locations/locations_substation.yaml
+    - overrides.yaml
+    - scenarios.yaml
+
+model:
+  name: 'brazil_model'
+  calliope_version: 0.6.10
+  timeseries_data_path: 'data'
+  reserve_margin:
+       electricity: 0.15
+  subset_time: ['2013-01-01', '2013-12-31']
+  time: {function: resample, function_options: {'resolution': '8H'}}
+
+# Recommended default: system-wide SPORES with a 10% near-optimal cost slack.
+# The first result is the monetary optimum; the remaining results minimise the
+# iteratively updated spores_score while remaining inside the cost limit.
+run:
+  solver: gurobi
+  solver_io: python
+  
+  solver_options:
+       NumericFocus: 3
+       ScaleFlag: 2
+
+       
+  cyclic_storage: true
+  ensure_feasibility: true
+  bigM: 1e6
+  zero_threshold: 1e-10
+  mode: spores
+  objective_options:
+       cost_class: {'monetary': 1, 'spores_score': 0}
+  spores_options:
+       spores_number: 10
+       slack: 0.10
+       score_cost_class: spores_score
+       slack_cost_group: systemwide_cost_max
+       objective_cost_class: {'monetary': 0, 'spores_score': 1}
+
+# SPORES replaces this large initial value after solving the monetary optimum.
+# A large finite number follows the Calliope 0.6.10 reference example.
+group_constraints:
+  systemwide_cost_max.cost_max.monetary: inf
+
+# Assign the SPORES score to every expandable system component whose spatial or
+# technological deployment should vary. Initial values must be zero; Calliope
+# updates them after every solution to penalise previously selected capacity.
+techs.pv_rooftop.costs.spores_score.energy_cap: 0
+techs.pv_rooftop.costs.spores_score.interest_rate: 1
+techs.pv_scale.costs.spores_score.energy_cap: 0
+techs.pv_scale.costs.spores_score.interest_rate: 1
+techs.wind_onshore.costs.spores_score.energy_cap: 0
+techs.wind_onshore.costs.spores_score.interest_rate: 1
+techs.battery.costs.spores_score.energy_cap: 0
+techs.battery.costs.spores_score.interest_rate: 1
+techs.ccgt.costs.spores_score.energy_cap: 0
+techs.ccgt.costs.spores_score.interest_rate: 1
+techs.hydrogen_production.costs.spores_score.energy_cap: 0
+techs.hydrogen_production.costs.spores_score.interest_rate: 1
+techs.hydrogen_storage.costs.spores_score.energy_cap: 0
+techs.hydrogen_storage.costs.spores_score.interest_rate: 1
+techs.hydrogen_power.costs.spores_score.energy_cap: 0
+techs.hydrogen_power.costs.spores_score.interest_rate: 1
+techs.nuclear.costs.spores_score.energy_cap: 0
+techs.nuclear.costs.spores_score.interest_rate: 1
+#techs.substation_new.costs.spores_score.energy_cap: 0
+#techs.substation_new.costs.spores_score.interest_rate: 1
+#techs.transmission_lines_cost.costs.spores_score.energy_cap: 0
+#techs.transmission_lines_cost.costs.spores_score.interest_rate: 1
+
+# Alternative approaches. Add one of these override names to the normal model
+# scenario at run time, e.g. scenario_baseline_2013,spores_renewable_siting.
+overrides:
+  spores_tight_5pct:
+    run.spores_options.slack: 0.05
+    run.spores_options.spores_number: 10
+
+  spores_wide_20pct:
+    run.spores_options.slack: 0.20
+    run.spores_options.spores_number: 20
+
+  spores_renewable_siting:
+    run.objective_options.cost_class: {'monetary': 1, 'spores_renewables': 0}
+    run.spores_options.score_cost_class: spores_renewables
+    run.spores_options.objective_cost_class: {'monetary': 0, 'spores_renewables': 1}
+    run.spores_options.slack: 0.10
+    techs.pv_rooftop.costs.spores_renewables.energy_cap: 0
+    techs.pv_rooftop.costs.spores_renewables.interest_rate: 1
+    techs.pv_scale.costs.spores_renewables.energy_cap: 0
+    techs.pv_scale.costs.spores_renewables.interest_rate: 1
+    techs.wind_onshore.costs.spores_renewables.energy_cap: 0
+    techs.wind_onshore.costs.spores_renewables.interest_rate: 1
+
+  spores_flexibility_grid:
+    run.objective_options.cost_class: {'monetary': 1, 'spores_flexibility': 0}
+    run.spores_options.score_cost_class: spores_flexibility
+    run.spores_options.objective_cost_class: {'monetary': 0, 'spores_flexibility': 1}
+    run.spores_options.slack: 0.10
+    techs.battery.costs.spores_flexibility.energy_cap: 0
+    techs.battery.costs.spores_flexibility.interest_rate: 1
+    techs.hydrogen_production.costs.spores_flexibility.energy_cap: 0
+    techs.hydrogen_production.costs.spores_flexibility.interest_rate: 1
+    techs.hydrogen_storage.costs.spores_flexibility.energy_cap: 0
+    techs.hydrogen_storage.costs.spores_flexibility.interest_rate: 1
+    techs.hydrogen_power.costs.spores_flexibility.energy_cap: 0
+    techs.hydrogen_power.costs.spores_flexibility.interest_rate: 1
+    techs.substation_new.costs.spores_flexibility.energy_cap: 0
+    techs.substation_new.costs.spores_flexibility.interest_rate: 1
+    techs.transmission_lines_cost.costs.spores_flexibility.energy_cap: 0
+    techs.transmission_lines_cost.costs.spores_flexibility.interest_rate: 1
+
+locations:
+  AC_Z1,AL_Z1,AM_Z1,AP_Z1,BA_Z1,BA_Z2,BA_Z3,BA_Z4,BA_Z5,BA_Z6,BA_Z7,CE_Z1,CE_Z2,ES_Z1,GO_Z1,GO_Z2,GO_Z3,GO_Z4,MA_Z1,MA_Z2,MA_Z3,MG_Z1,MG_Z2,MG_Z3,MG_Z4,MG_Z5,MG_Z6,MG_Z7,MG_Z8,MS_Z1,MS_Z2,MS_Z3,MS_Z4,MT_Z1,MT_Z2,MT_Z3,MT_Z4,MT_Z5,MT_Z6,PA_Z1,PA_Z2,PA_Z3,PA_Z4,PA_Z5,PB_Z1,PE_Z1,PE_Z2,PI_Z1,PI_Z2,PI_Z3,PR_Z1,PR_Z2,RJ_Z1,RN_Z1,RO_Z1,RO_Z2,RR_Z1,RS_Z1,RS_Z2,RS_Z3,SC_Z1,SC_Z2,SE_Z1,SP_Z1,SP_Z2,SP_Z3,TO_Z1,TO_Z2:
+    techs:
+         demand_electricity:
+         demand_hydrogen:
+         pv_rooftop:
+         pv_scale:
+         wind_onshore:
+         battery:
+         hydrogen_transport:
+         ccgt:
+         hydrogen_production:
+         hydrogen_power:
+         hydrogen_storage:
+   #     substation_new:
+   #      conversion_dummy:
+
+  BA_Z1,BA_Z3,BA_Z6,CE_Z1,CE_Z2,MA_Z2,PB_Z1,PE_Z1,PE_Z2,PI_Z1,PI_Z2,PI_Z3,RJ_Z1,RN_Z1,RS_Z1,RS_Z2,RS_Z3,SC_Z1,SC_Z2,SE_Z1,SP_Z3:
+    techs:
+         wind_onshore_existing:
+
+  BA_Z2,BA_Z3,BA_Z5,BA_Z6,CE_Z1,CE_Z2,GO_Z2,MG_Z3,MG_Z5,MG_Z6,MG_Z7,MT_Z1,PB_Z1,PE_Z1,PE_Z2,PI_Z1,PI_Z2,PI_Z3,RN_Z1,RS_Z2,SC_Z1,SC_Z2,SP_Z1,SP_Z2,TO_Z1:
+    techs:
+         pv_existing:
+
+  BA_Z6,GO_Z1,MG_Z1,MG_Z2,MG_Z3,MG_Z7,MT_Z1,PR_Z1,PR_Z2,RS_Z2,RS_Z3,SP_Z1,SP_Z2,TO_Z1:
+    techs:
+         run_of_river:
+         reservoir:
+
+  PI_Z2:
+    techs:
+         reservoir:
+
+ # AM_Z1,AP_Z1,BA_Z1,BA_Z2,BA_Z3,BA_Z4,BA_Z6,BA_Z7,CE_Z1,GO_Z1,GO_Z2,GO_Z3,GO_Z4,MA_Z1,MA_Z2,MA_Z3,MG_Z7,MS_Z4,PA_Z1,PA_Z2,PA_Z3,PI_Z2,PR_Z1,PR_Z2,RJ_Z1,RS_Z1,RS_Z2,RS_Z3,SC_Z1,SC_Z2,SE_Z1,SP_Z1,SP_Z2,SP_Z3,TO_Z1:
+  #  techs:
+   #      substation_existing:
+
+  RJ_Z1:
+    techs:
+         nuclear:
